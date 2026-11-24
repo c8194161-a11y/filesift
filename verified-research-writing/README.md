@@ -72,7 +72,7 @@ These checks exercise the workflow but cannot prove that every future model resp
 
 ## 中文说明
 
-这个 skill 文件夹可在 Windows、Linux 和 macOS 上使用；AI 工具需要支持兼容的 `SKILL.md` 格式。随附脚本使用 Python 标准库，需 Python 3.10 或更高版本及网络访问。安装目录由所用 AI 工具决定。
+这个 skill 文件夹可在 Windows、Linux 和 macOS 上使用；AI 工具需要支持兼容的 `SKILL.md` 格式。随附脚本使用 Python 标准库，需 Python 3.10 或更高版本及网络访问。安装目录由所用 AI 工具决定。GitHub Actions 会在这三个系统上自动运行相同的检查。
 
 它用于辅助撰写论文、文献综述、系统综述、范围综述和实验报告，提供逐篇证据表、实验数据复核、按文种区分的写作流程，以及按评分标准或期刊要求进行的交稿检查。检索脚本会返回候选索引记录、摘要和部分全文链接，不会自动读取全部全文；AI 必须如实说明搜索和全文访问限制。实验数据必须来自用户提供的真实记录，系统综述的筛选数量必须来自实际记录；缺失的信息会标为待补，不会由 AI 编造。
 

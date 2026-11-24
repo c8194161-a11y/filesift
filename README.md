@@ -6,7 +6,7 @@ The skill emphasizes verifiable references, transparent evidence limits, reprodu
 
 ## Install the skill
 
-The same [`verified-research-writing`](verified-research-writing/) folder works on Windows and Linux. It contains Markdown instructions and standard-library Python scripts, with no OS-specific binaries. The AI host must support Agent Skills or a compatible `SKILL.md` format. Install the folder into the skills directory documented by your AI tool; paths and reload steps depend on that product.
+The same [`verified-research-writing`](verified-research-writing/) folder works on Windows, Linux, and macOS. It contains Markdown instructions and standard-library Python scripts, with no OS-specific binaries. The AI host must support Agent Skills or a compatible `SKILL.md` format. Install the folder into the skills directory documented by your AI tool; paths and reload steps depend on that product.
 
 The core instructions live in `SKILL.md`. The optional `agents/openai.yaml` contains product-specific metadata that other compatible hosts can ignore. Running the included search and reference-check scripts requires Python 3.10 or newer and network access.
 
@@ -41,7 +41,7 @@ FileSift 是一个面向学术写作的开源项目，当前包含 `verified-res
 
 ## 安装
 
-同一个 [`verified-research-writing`](verified-research-writing/) 文件夹可以用于 Windows 和 Linux。它由 Markdown 指令和 Python 标准库脚本组成，不含系统专用二进制文件。AI 工具需要支持 Agent Skills 或兼容的 `SKILL.md` 格式；请按该工具的说明把文件夹放入其 skills 目录。运行检索和引用核验脚本需要 Python 3.10 或更高版本及网络访问。
+同一个 [`verified-research-writing`](verified-research-writing/) 文件夹可以用于 Windows、Linux 和 macOS。它由 Markdown 指令和 Python 标准库脚本组成，不含系统专用二进制文件。AI 工具需要支持 Agent Skills 或兼容的 `SKILL.md` 格式；请按该工具的说明把文件夹放入其 skills 目录。运行检索和引用核验脚本需要 Python 3.10 或更高版本及网络访问。GitHub Actions 会在这三个系统上运行相同的检查。
 
 知网需要宿主已配置授权 MCP 服务，或宿主提供浏览器操作和用户授权会话；本项目不包含知网连接器或账号。
 
