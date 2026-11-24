@@ -1,0 +1,43 @@
+---
+name: verified-research-writing
+description: Draft or revise academic papers, literature reviews, and experimental reports using traceable scholarly evidence. Verify every reference and its support for the claim; never invent citations or experimental data.
+---
+
+# Verified Research Writing
+
+Use this skill when drafting or revising a course paper, research manuscript, literature review, systematic/scoping review, or experimental report that needs scholarly evidence. Write in the user's language and follow the supplied assignment, journal, or institutional requirements. The goal is a useful draft with a traceable evidence trail, not a claim that every search is exhaustive or that the result is guaranteed publication-ready.
+
+## Evidence and citation rules
+
+- Never invent a paper, author, title, journal, date, DOI, quotation, page number, finding, or URL. Never fill bibliographic gaps from memory.
+- Verify each reference against a reliable record, preferably the publisher's page or a DOI registry such as Crossref. Use field-specific authoritative records where appropriate, such as PubMed for biomedical indexing, an official preprint repository for preprints, proceedings published by the conference or society, or the publisher/catalog record for books.
+- Treat search snippets, citation lists copied from other AI outputs, and unsourced secondary pages as leads only. A DOI that resolves establishes neither that the cited claim is supported nor that the work is high quality.
+- Check that the record matches the cited version and the key metadata: title, author list, publication venue or repository, year, and DOI or other stable identifier. Resolve meaningful conflicts against the source of record and disclose unresolved discrepancies.
+- Separately verify that the source supports the specific sentence it is cited for. Read the relevant full text when accessible. If only the abstract or metadata is available, say so and do not attribute details or conclusions that cannot be checked there.
+- Prefer primary studies for claims about individual experiments and authoritative reviews or meta-analyses for synthesis. Match evidence strength to wording: do not turn association into causation, a narrow sample into a universal conclusion, or a preliminary result into consensus.
+- When available, check for corrections, retractions, or replaced versions for central sources. Report a relevant notice; do not imply that every source's publication status was exhaustively audited.
+
+## Workflow
+
+1. Identify the document type, research question, audience, length, citation style, rubric/template, and supplied sources, protocol, notes, and data. Read [references/workflows.md](references/workflows.md) and load only the workflow that matches the requested document. Ask only for information that materially affects accuracy; otherwise proceed with explicit assumptions.
+2. Search scholarly sources before drafting. If the host provides web search, scholarly connectors, or MCP tools, use them. If the bundled Python helper can run and the host permits network access, use `scripts/search_literature.py` for relevant indexes. For CNKI, first check whether a CNKI-specific MCP server is available and configured; if so, follow [references/mcp-integration.md](references/mcp-integration.md) and invoke its search tools. Otherwise use interactive browser/computer-use tools when the host provides them and the user has an authorized session; follow the workflow in [references/platform-access.md](references/platform-access.md). The bundled Python helper does not query CNKI, and this skill does not install an MCP server. Read [references/source-apis.md](references/source-apis.md) for helper details and platform references for access limits. Search tools discover records and abstracts and may return links to eligible open full text; they do not by themselves establish that a result supports a claim. If the required browser/API/network capability is unavailable, offer a ready-to-run search query and ask for permitted records/files or mark citations as needing verification. Never imply a search happened when it did not.
+3. Use focused queries with relevant synonyms and, when appropriate, population, method, outcome, and date terms. Record the actual queries, providers, dates, and material access limits. Do not describe a convenient search as systematic, comprehensive, or exhaustive unless the search and selection process was actually planned, logged, and carried out.
+4. Deduplicate candidates by DOI and then normalized title. For supplied RIS, JSON, or CSV reference lists, run `scripts/verify_references.py` when Python/network access is available. It checks bibliographic metadata against Crossref; read [references/reference-verification.md](references/reference-verification.md) for interpretation. Verify important records against the publisher or another appropriate source of record where possible. Treat index records as useful checks, not infallible truth. A metadata match does not verify the source's claim support or study quality. For preprints, identify the record as a preprint unless a separate published version is verified.
+5. Build an evidence ledger using [references/evidence-and-data.md](references/evidence-and-data.md). For each important claim, record the supporting source and passage/location when accessible, study design, population/sample, methods, relevant result, limitations, and whether evidence was checked in full text, abstract, or metadata only. Open a lawful full-text copy or inspect user-provided files when available. Use only an already authorized browser session or credentials; do not scrape subscription pages, bypass access controls, or use unapproved endpoints. Do not claim a claim is full-text verified when only metadata or an abstract was inspected.
+6. Draft with citations attached to the claims they support. Keep source findings distinct from interpretation and preserve uncertainty, null/conflicting results, and study limitations. Cite close paraphrases and quotations; do not present a source's idea as an original finding.
+7. Build the reference list only from verified records. Use the requested style; include DOI or another stable identifier when verified. Do not include a source just because it appeared in search results.
+8. Check the final document against any supplied rubric, journal instructions, or report template using [references/submission-checks.md](references/submission-checks.md). Check in-text/reference-list matching, claims against the evidence ledger, numbers against source data, tables/figures, limits, and required disclosures. Report any unmet item rather than silently filling gaps.
+
+If browsing or source records are unavailable, do not produce citations from memory. Ask the user for source links or files when needed, or draft with explicit markers such as `[需核实来源]` and explain that the references remain unverified. Do not silently present placeholders as real references.
+
+## Experimental reports
+
+- Treat the user's actual protocol, lab notes, and raw data as the evidence for what was done and observed. Do not invent measurements, sample sizes, replicates, dates, equipment, calibration, procedural steps, ethics approval/consent, statistical results, or observations.
+- If information is missing, use a clear marker such as `[待补：实际测量值]` or ask for the missing data. Do not create plausible-looking results to complete a report.
+- You may calculate results from supplied data. Preserve raw values; state formulas, units, sample counts, rounding, assumptions, exclusions, and uncertainty where relevant. Distinguish directly measured, calculated, and interpreted values. Make calculations reproducible and flag when the supplied data are insufficient for the requested analysis.
+- Clearly separate observed results from expected or literature-reported results. Literature can support background and discussion, but cannot substitute for the user's experimental observations.
+- If the user requests a fictional or illustrative example, label all simulated data prominently as hypothetical and unsuitable for submission as real experimental results.
+
+## Delivery
+
+Provide the requested document and a compact verification note. For substantial literature-based work, include the evidence ledger or a concise version of it; for reviews, include the search/screening log; for lab reports, include the calculation/data checks; and for formatted submissions, include the compliance checklist. Flag unsupported claims, missing evidence, and unmet requirements instead of disguising them with citations.

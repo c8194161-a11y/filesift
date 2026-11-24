@@ -1,0 +1,4 @@
+interface:
+  display_name: "Verified Research Writing"
+  short_description: "Verify scholarly sources and evidence before drafting papers"
+  default_prompt: "Use $verified-research-writing to draft or review this paper using verified scholarly sources."
