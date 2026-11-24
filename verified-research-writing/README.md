@@ -1,20 +1,14 @@
 # Verified Research Writing
 
-A Codex skill for writing academic papers, literature reviews, and experimental reports from traceable scholarly evidence. It requires references to be checked against reliable records and against the claims they support, and it prevents missing experimental data from being filled in with invented results.
+A portable Agent Skill for writing academic papers, literature reviews, and experimental reports from traceable scholarly evidence. It requires references to be checked against reliable records and against the claims they support, and it prevents missing experimental data from being filled in with invented results.
 
-## Install
+## Cross-platform installation
 
-Copy the `verified-research-writing` folder into your Codex skills directory:
+The same `verified-research-writing` folder works on Windows, Linux, and macOS. It contains Markdown instructions and Python scripts that use the standard library; it has no OS-specific binaries. The AI host must support Agent Skills or a compatible `SKILL.md` format.
 
-- Windows, for the current user: `%USERPROFILE%\.agents\skills\verified-research-writing`
-- Inside one repository only: `<repository>\.agents\skills\verified-research-writing`
-- macOS/Linux: `~/.agents/skills/verified-research-writing`
+Copy the whole folder into the skills directory used by your AI tool. The location and reload steps vary by product and installation scope, so follow that tool's instructions. To run the bundled search or reference-check scripts, install Python 3.10 or newer and allow network access. The optional `agents/openai.yaml` file is product-specific metadata and can be ignored by compatible hosts that do not use it.
 
-Restart Codex or start a fresh session if the skill does not appear immediately. You can also invoke it explicitly with `$verified-research-writing`.
-
-## Install in another AI tool
-
-This package uses the portable `SKILL.md` folder format. If another AI tool supports Agent Skills or compatible `SKILL.md` skills, copy the whole `verified-research-writing` folder into that tool's skill directory and follow its reload/restart instructions. Skill discovery paths and support for helper scripts vary by product; the tool must be able to read the folder's `SKILL.md` and, to run automatic searches, execute Python 3 with network access. The `agents/openai.yaml` file is optional product metadata and can be ignored by other tools.
+After installing, reload the host or start a fresh session. Use that product's skill selector or invocation syntax to activate the skill.
 
 ## What it does
 
@@ -64,7 +58,7 @@ The skill does not claim that a search is exhaustive or that a verified citation
 
    Check provider statuses, query, search time, and candidate records. A failed provider should appear as an error, not be reported as searched.
 
-2. Install the folder into the Codex skills directory, start a fresh session, and explicitly invoke `$verified-research-writing`. Ask it to write a short background paragraph and report which sources it actually checked.
+2. Install the folder into the target AI host, reload or start a fresh session, and activate the skill using that host's selector or invocation syntax. Ask it to write a short background paragraph and report which sources it actually checked.
 
 3. Test its honesty with a deliberately nonexistent DOI and with an experiment that has missing values/equipment details. It should mark unverified sources and missing facts instead of filling them in.
 
@@ -78,7 +72,9 @@ These checks exercise the workflow but cannot prove that every future model resp
 
 ## 中文说明
 
-这个 skill 用于辅助撰写论文、文献综述、系统综述、范围综述和实验报告。它提供逐篇证据表、实验数据复核、按文种区分的写作流程，以及按评分标准或期刊要求进行的交稿检查。运行环境允许联网并能运行随附脚本时，它会搜索 Crossref、PubMed、Europe PMC、DOAJ、Wiley 和 arXiv 等来源；脚本提供的是候选索引记录、摘要和部分全文链接，不会自动读取全部全文。没有搜索或全文访问能力时，AI 必须如实说明限制。实验数据必须来自用户提供的真实记录，系统综述的筛选数量必须来自实际记录；缺失的信息会标为待补，不会由 AI 编造。
+这个 skill 文件夹可在 Windows、Linux 和 macOS 上使用；AI 工具需要支持兼容的 `SKILL.md` 格式。随附脚本使用 Python 标准库，需 Python 3.10 或更高版本及网络访问。安装目录由所用 AI 工具决定。
+
+它用于辅助撰写论文、文献综述、系统综述、范围综述和实验报告，提供逐篇证据表、实验数据复核、按文种区分的写作流程，以及按评分标准或期刊要求进行的交稿检查。检索脚本会返回候选索引记录、摘要和部分全文链接，不会自动读取全部全文；AI 必须如实说明搜索和全文访问限制。实验数据必须来自用户提供的真实记录，系统综述的筛选数量必须来自实际记录；缺失的信息会标为待补，不会由 AI 编造。
 
 用户已配置知网 MCP 服务时，AI 可以调用该服务公开的检索工具；若没有 MCP，但 AI 宿主有浏览器操作能力，也可在用户授权的知网会话中按网页流程检索。这个仓库不自带知网连接器或账号。可用的接口取决于宿主工具，检索成功与否必须以真实工具返回为准。`verify_references.py` 可核对 RIS/EndNote/JSON/CSV 中的题录与 Crossref 元数据，但不能验证来源是否支持论点。
 
